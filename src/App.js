@@ -6,7 +6,8 @@ class App extends React.Component {
 constructor () {
   super ()
   this.state = {
-    firsName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     rememberMe: false,
@@ -46,6 +47,15 @@ handleSubmit = (e) => {
   } 
 }
 
+handleFirstNameChange = (e) => {
+  this.setState({firstName: e.target.value})
+}
+
+handleLasttNameChange = (e) => {
+  this.setState({lastName: e.target.value})
+}
+
+
 
 
 render () {
@@ -59,7 +69,8 @@ render () {
       
       {isSubmitted ? (
 
-        <h1>{this.state.email}</h1>
+        <h1>Bienvenue {this.state.firstName} {this.state.lastName}</h1>
+
 
       ) : (
 
@@ -70,7 +81,12 @@ render () {
 
         <div className="form-group">
           <label htmlFor="inputFirstName">First Name</label>
-          <input type="text" onChange={this.handleLastNameChange} className="form-control" id="inputFirstName"  placeholder="Enter your First Name"/>
+          <input type="text" onChange={this.handleFirstNameChange} className="form-control" id="inputFirstName"  placeholder="Enter your First Name"/>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="inputLastName">First Name</label>
+          <input type="text" onChange={this.handleLasttNameChange} className="form-control" id="inputLasttName"  placeholder="Enter your Last Name"/>
         </div>
 
         {emailIsValid ? (
