@@ -15,62 +15,60 @@ constructor () {
   }
 }
 
-// handleEmailChange = () => {
 
-// }
+// emailsValid = /^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(this.state.email);
 
-// handlePasswordChange = () => {
 
-// }
 
-// handleRememberMeChange = () => {
 
-// }
+handleEmailChange = (e) => {
+  this.setState({email: e.target.value})
+  if ('/^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/'.test(this.state.email)) {
+    this.setState({emailIsValid: "true"})
+}
+}
 
-// handleSubmit = () => {
+handlePasswordChange = (e) => {
+  this.state({password: e.target.value})
+  
+  if (this.state.password.length >5) {
+    this.setState({passwordIsValid:"true"})
+  }
+}
 
-// }
+handleRememberMeChange = (e) => {
+  this.setState({rememberMe: "true"})
+}
+
+handleSubmit = (e) => {
+  e.preventDefault();
+  if (this.state.emailIsValid && this.state.passwordIsValid) {
+    this.setState({isSubmitted: "true"})
+  } 
+}
 
 render () {
   return (
     <>
-      {/* <form>
-        <label>
-          Email address
-          <input type="text" name="name" />
-        </label>
-
-        <label>
-          Password
-          <input type="text" name="name" />
-        </label>
-        <p>Remember me</p>
-        <input type="submit" value="Submit" />
-      </form>
-
-      <select>
-        <option value="Remember ME">Remember me</option>
-      </select> */}
-
 
       <form>
 
         <div class="form-group">
           <label for="inputEmail1">Email address</label>
-          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+          <input type="email" onChange={this.handleEmailChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
         </div>
         
         <div class="form-group">
           <label for="inputPassword1">Password</label>
-          <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+          <input type="password" onChange={this.handlePasswordChange} className="form-control" id="exampleInputPassword1" placeholder="Password"/>
         </div>
         
         <div class="form-group form-check">
-          <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
+          <input type="checkbox" onChange={this.handleRememberMeChange} className="form-check-input" id="exampleCheck1"/>
           <label class="form-check-label" for="exampleCheck1">Remember me</label>
         </div>
         
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" onSubmit={this.handleSubmit} className="btn btn-primary">Submit</button>
       
       </form>
 
