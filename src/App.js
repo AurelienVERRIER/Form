@@ -69,8 +69,15 @@ render () {
       
       {isSubmitted ? (
 
-        <h1>Bienvenue {this.state.firstName} {this.state.lastName}</h1>
+      
+        <section >
 
+          <h1 className="border border-success rounded">
+            Bienvenue {this.state.firstName} {this.state.lastName}
+          </h1>
+          <h2>{this.state.email}</h2>
+        </section>
+      
 
       ) : (
 
