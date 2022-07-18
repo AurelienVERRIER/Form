@@ -52,9 +52,19 @@ render () {
 
   const emailIsValid = this.state.emailIsValid
   const passwordIsValid = this.state.passwordIsValid
+  const isSubmitted = this.state.isSubmitted
 
   return (
     <>
+      
+      {isSubmitted ? (
+
+        <h1>{this.state.email}</h1>
+
+      ) : (
+
+
+      
       
       <form onSubmit={this.handleSubmit}>
 
@@ -97,7 +107,6 @@ render () {
         )}
         
         
-        
 
         
         <div className="form-group form-check">
@@ -108,11 +117,12 @@ render () {
         <button type="submit"  className="btn btn-primary">Submit</button>
       
       </form>
+   
 
-      {/* )} */}
+    )}
+ </>
 
-    </>
-  )
+)
 }
 }
 
